@@ -3,8 +3,6 @@ package ru.netology.javaqa;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class TaskTest {
 
 
@@ -20,7 +18,7 @@ class TaskTest {
 
 
     @Test
-    public void shouldTheQueryBeInSimpleTask2() {
+    public void shouldTheQueryBeInSimpleTask0() {
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
 
         boolean expected = false;
@@ -44,6 +42,18 @@ class TaskTest {
 
     @Test
     public void shouldTheQueryBeInEpic2() {
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб", "Яйца"};
+        Epic epic = new Epic(55, subtasks);
+
+        boolean expected = true;
+        boolean actual = epic.matches("Яйца");
+
+        Assertions.assertEquals(actual, expected);
+    }
+
+
+    @Test
+    public void shouldTheQueryBeInEpic0() {
         String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
         Epic epic = new Epic(55, subtasks);
 
@@ -55,7 +65,7 @@ class TaskTest {
 
 
     @Test
-    public void shouldTheQueryBeInSimpleMeeting1() {
+    public void shouldTheQueryBeInMeeting1() {
         Meeting meeting = new Meeting(
                 555,
                 "Выкатка 3й версии приложения",
@@ -71,7 +81,7 @@ class TaskTest {
 
 
     @Test
-    public void shouldTheQueryBeInSimpleMeeting2() {
+    public void shouldTheQueryBeInMeeting2() {
         Meeting meeting = new Meeting(
                 555,
                 "Выкатка 3й версии приложения",
@@ -87,7 +97,23 @@ class TaskTest {
 
 
     @Test
-    public void shouldTheQueryBeInSimpleMeeting3() {
+    public void shouldTheQueryBeInMeetingDouble() {
+        Meeting meeting = new Meeting(
+                555,
+                "Приложение НетоБанка",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+
+        boolean expected = true;
+        boolean actual = meeting.matches("Приложение НетоБанка");
+
+        Assertions.assertEquals(actual, expected);
+    }
+
+
+    @Test
+    public void shouldTheQueryBeInMeeting0() {
         Meeting meeting = new Meeting(
                 555,
                 "Выкатка 3й версии приложения",
